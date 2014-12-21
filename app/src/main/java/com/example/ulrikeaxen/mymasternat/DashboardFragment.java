@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 
 /**
@@ -23,6 +25,7 @@ public class DashboardFragment extends Fragment {
     // types of parameters
     private static final String ARG_SECTION_NUMBER = "section_number";
 
+    private WebView mWebView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -57,7 +60,17 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        mWebView = (WebView) view.findViewById(R.id.fragment_dashboard_webview);
+        // Enable Javascript
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+
+        mWebView.loadUrl("http://www.minnesotamasternaturalist.org/login/");
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
