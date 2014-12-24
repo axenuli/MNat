@@ -1,6 +1,7 @@
 package com.example.ulrikeaxen.mymasternat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -22,7 +23,9 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-        DashboardFragment.OnFragmentInteractionListener
+        DashboardFragment.OnFragmentInteractionListener,
+        OpportunityListFragment.OnFragmentInteractionListener
+
 {
 
     /**
@@ -57,8 +60,14 @@ public class MainActivity extends ActionBarActivity
 
         switch (position) {
             case 0:
-            case 1:
                 FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, OpportunityListFragment.newInstance(position + 1))
+                        .commit();
+                break;
+
+            case 1:
+                fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                         .commit();
@@ -127,7 +136,10 @@ public class MainActivity extends ActionBarActivity
     {
         // acts on communication from dashboard fragment
     }
-
+public void onFragmentInteraction(String string)
+{
+    // from opportunity list fragment
+}
     /**
      * A placeholder fragment containing a simple view.
      */
