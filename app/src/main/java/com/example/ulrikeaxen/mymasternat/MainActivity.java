@@ -3,6 +3,7 @@ package com.example.ulrikeaxen.mymasternat;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends BaseActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         DashboardFragment.OnFragmentInteractionListener,
         OpportunityListFragment.OnFragmentInteractionListener
@@ -41,7 +42,7 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+       // setContentView(R.layout.activity_main);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -51,6 +52,10 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+    }
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_main;
     }
 
     @Override
@@ -67,6 +72,7 @@ public class MainActivity extends ActionBarActivity
                 break;
 
             case 1:
+
                 fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
@@ -106,15 +112,15 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+       // if (!mNavigationDrawerFragment.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.main, menu);
-            restoreActionBar();
+            //restoreActionBar();
             return true;
-        }
-        return super.onCreateOptionsMenu(menu);
+      //  }
+       // return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -136,10 +142,10 @@ public class MainActivity extends ActionBarActivity
     {
         // acts on communication from dashboard fragment
     }
-public void onFragmentInteraction(String string)
-{
-    // from opportunity list fragment
-}
+    public void onFragmentInteraction(String string)
+    {
+        // from opportunity list fragment
+    }
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -169,6 +175,8 @@ public void onFragmentInteraction(String string)
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            TextView view = (TextView)rootView.findViewById(R.id.section_label);
+            view.setText(R.string.title_section2);
             return rootView;
         }
 

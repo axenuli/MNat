@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -82,7 +83,9 @@ public class OpportunityListFragment extends ListFragment implements AbsListView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_opportunitylist, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_opportunitylist,
+                container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);

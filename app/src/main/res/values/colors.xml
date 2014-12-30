@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/primary_material_light</color>
+    <color name="colorPrimaryDark">@color/primary_dark_material_dark</color>
+
+    <color name="colorSecondary">@color/abc_secondary_text_material_light</color>
+    <color name="colorSecondaryDark">@color/abc_secondary_text_material_dark</color>
+
+    <color name="windowBackgroundColor">#55555555</color>
+    <color name="black_translucent">#80000000</color>
+</resources>
